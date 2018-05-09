@@ -1,24 +1,4 @@
 source "https://rubygems.org"
 
-ruby '2.4.3'
-
-gem 'materialize-sass'
-gem "jekyll", "~> 3.6.2"
-gem "minima", "~> 2.0"
-gem 'rspec'
-gem 'capybara'
-gem "selenium-webdriver"
-gem "chromedriver-helper"
-gem "rack-jekyll"
-gem "pry"
-
-
-group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.6"
-  gem "jekyll-assets"
-  gem "jekyll-minifier"
-end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gemspec
+gem 'jekyll', '3.1.2' # this is the Jekyll version we are working with
+# gem 'nokogiri', '1.6.7.2' # Nokogiri is a dependency that might cause errors if it's not added to the script

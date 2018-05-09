@@ -1,248 +1,137 @@
-# Jekyll Material Theme
+![Jekyll Version](https://img.shields.io/badge/Jekyll-3.1.2-red.svg)
+![Build Status](https://gitlab.com/jekyll-themes/default-bundler/badges/master/build.svg)
 
-A Jekyll Theme based on [Material Design](https://material.io/) using [Materialize](http://materializecss.com/).
+----
 
-![CircleCI](https://img.shields.io/circleci/project/github/jameshamann/jekyll-material-theme.svg?style=for-the-badge)
-![Gem](https://img.shields.io/gem/dt/jekyll-material-theme.svg?style=for-the-badge) ![Gem](https://img.shields.io/gem/v/jekyll-material-theme.svg?style=for-the-badge)
+View Demo: https://lorepirri.gitlab.io/jekyll-theme-simple-blog/
 
-## Examples
+-----
+# Simple Blog Theme
 
-<a href="https://imgur.com/D9DSyuk"><img src="https://i.imgur.com/D9DSyuk.gif" title="source: imgur.com" /></a>
+*Simple Blog is a Jekyll theme for Gitlab or GitHub Pages. It is based on [Cayman Blog Theme](https://github.com/lorepirri/cayman-blog). You can [preview the theme to see what it looks like](https://lorepirri.gitlab.io/jekyll-theme-simple-blog/), or even [use it today](#install).*
+
+<img src="https://gitlab.com/lorepirri/jekyll-theme-simple-blog/raw/master/simple-blog-theme.png" alt="Thumbnail of jekyll-theme-simple-blog" style="max-width:30%; border: 1px solid grey;"/>
+
+## Features
+
+- Blog
+- Responsive
+- Minimal
+- Multi-language
+- SEO optimized for Facebook preview
+- Facebook plugins integration (Page, Comments, Messenger, Like)
+- Facebook Mirring Comments
+- Social buttons (facebook, instagram, linkedin, twitter, github, gitlab)
+- RSS feed multi-language
+
+## Install
+
+Simple Blog Theme is 100% compatible with GitLab and GitHub Pages.
+
+### Install as a Fork
+
+1. [Fork the repo](https://gitlab.com/lorepirri/jekyll-theme-simple-blog)
+2. Clone down the repo with one of the two:
+    * ssh `$ git clone git@gitlab.com:your-username/jekyll-theme-simple-blog.git`
+    * https: `$ git clone https://gitlab.com/lorepirri/jekyll-theme-simple-blog.git`
+3. Empty the `_posts/` folder
+4. Install bundler and gems with `$ script/bootstrap`
+5. Run Jekyll with `$ script/server`
+6. Modify `_config.yml`, `about-en.md`, `contact-en.md`, and the other pages for your project
+6. Write your posts in `_posts/en` and `_posts/<other-language>`
+7. [Customize the theme](customizing)
+
+### SEO tags
+
+Simple Blog includes simple SEO tags from [jekyll-social-metatags](https://github.com/lorepirri/jekyll-social-metatags). Have a look at the page for its usage.
+
+The usage is compatible with the plugin [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag), which provides a battle-tested template of crowdsourced best-practices.
+
+To switch to a better SEO tags however, one should install [Jekyll Feed plugin](https://github.com/jekyll/jekyll-feed):
+
+1. Add this line to your site's Gemfile:
+
+    ```ruby
+    gem 'jekyll-seo-tag'
+    ```
+
+2. And then add this line to your site's `_config.yml`:
+
+    ```yml
+    gems:
+      - jekyll-seo-tag
+    ```
+
+3. Replace with the following, the `<!-- jekyll-seo-tag -->` comment in your site's `default.html`:
+
+      ```liquid
+      {% seo %}
+      ```
+
+For more information about configuring this plugin, see the official [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag) page.
 
 
-<a href="https://imgur.com/hlB1MOw"><img src="https://i.imgur.com/hlB1MOw.gif" title="source: imgur.com" /></a>
+### Stylesheet
 
-<a href="https://imgur.com/qjhId2x"><img src="https://imgur.com/qjhId2x.gif" title="source: imgur.com" /></a>
-##### Cookie Policy
+If you'd like to add your own custom styles:
 
-If you use cookies on your site, or choose to use Google Analytics, you're able to notify visitors with this prompt. The ```Thanks!``` dialog message can be customised in your ```_config.yml``` file.
+1. Create a file called `/assets/css/style.scss` in your site
+2. Add the following content to the top of the file, exactly as shown:
+    ```scss
+    ---
+    ---
 
-<a href="https://imgur.com/O7sICnY"><img src="https://i.imgur.com/O7sICnY.gif" title="source: imgur.com" /></a>
+    @import "{{ site.theme }}";
+    ```
+3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
 
-##### Tools and Experience Section
+### Layouts
 
-If you'd like to display some of your skills and experience, you can do so through using the section below.
+If you'd like to change the theme's HTML layout:
 
-<a href="https://imgur.com/DjtrH6s"><img src="https://imgur.com/DjtrH6s.png" title="source: imgur.com" /></a>
+1. [Copy the original template](https://gitlab.com/lorepirri/jekyll-theme-simple-blog/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
+2. Create a file called `/_layouts/default.html` in your site
+3. Paste the default layout content copied in the first step
+4. Customize the layout as you'd like
 
+### Sass variables
 
-### [Live Demo](https://jameshamann.com)
+If you'd like to change the theme's [Sass variables](https://gitlab.com/lorepirri/jekyll-theme-simple-blog/blob/master/_sass/variables.scss), set new values before the `@import` line in your stylesheet:
 
-## Installation
+```scss
+$section-headings-color: #0086b3;
 
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "jekyll-material-theme"
+@import "{{ site.theme }}";
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+## Roadmap
 
-```yaml
-theme: jekyll-material-theme
-```
+See the [open issues](https://gitlab.com/lorepirri/jekyll-theme-simple-blog/issues) for a list of proposed features (and known issues).
 
-And then execute:
+## Project philosophy
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install jekyll-material-theme
-
-## Usage
-
-The ```_config.yml``` file has the following options.
-
-Please ensure to copy this sample before serving up your site as some variables are required in order to make the site run correctly.
-
-```yaml
-title: Your awesome title
-name: Your Name
-email: your-email@example.com
-description: Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-
-theme: jekyll-material-theme
-
-parallax_image_one: assets/images/startup3.jpg # These are the images used for the parallax background
-parallax_image_two: assets/images/startup3.jpg
-
-# Settings for the porfolio section
-
-portfolio_heading: Portfolio
-portfolio_type: cards #cards or carousel
-
-project_one: "First Project"
-project_one_description: Describe your project!
-project_one_url: https://github.com/jameshamann/jekyll-material-theme
-project_one_icon: location_on # these are from materiailize css, the full collection is here: http://materializecss.com/icons.html
-
-project_two: Second Project
-project_two_description: Describe your project!
-project_two_url: https://github.com/jameshamann/jekyll-material-theme
-project_two_icon: photo_camera
-
-
-project_three: Third Project
-project_three_description: Describe your project!
-project_three_url: https://github.com/jameshamann/jekyll-material-theme
-project_three_icon: hotel
-
-
-project_four: Fourth Project
-project_four_description: Describe your project!
-project_four_url: https://github.com/jameshamann/jekyll-material-theme
-project_four_icon: restaurant
-
-# Skill icons from https://konpa.github.io/devicon/
-
-skills:
-  - name: amazonwebservices
-  - name: android
-  - name: angularjs
-  - name: apache
-  - name: appcelerator
-  - name: apple
-  - name: atom
-  - name: babel
-  - name: backbonejs
-  - name: bitbucket
-  - name: bootstrap
-  - name: bower
-  - name: c
-  - name: chrome
-  - name: codeigniter
-  - name: coffescript
-  - name: confluence
-  - name: cplusplus
-  - name: csharp
-  - name: css3
-  - name: cucumber
-  - name: d3js
-  - name: debian
-  - name: devicon
-  - name: django
-  - name: docker
-  - name: doctrine
-  - name: dot-net
-  - name: drupal
-  - name: erlang
-  - name: facebook
-  - name: firefox
-  - name: foundation
-  - name: gatling
-  - name: gimp
-  - name: git
-  - name: github
-  - name: gitlab
-  - name: go
-  - name: google
-  - name: gradle
-  - name: grunt
-  - name: gulp
-  - name: heroku
-  - name: html5
-  - name: ie10
-  - name: illustrator
-  - name: inkscape
-  - name: itellij
-  - name: java
-  - name: jasmine
-  - name: javascript
-  - name: laravel
-  - name: less
-  - name: linux
-  - name: meteor
-  - name: mocha
-  - name: mongodb
-  - name: moodle
-  - name: mysql
-  - name: nginx
-  - name: nodejs
-  - name: nodewebkit
-  - name: oracle
-  - name: photoshop
-  - name: php
-  - name: phpstorm
-  - name: protractor
-  - name: postgresql
-  - name: python
-  - name: pycharm
-  - name: rails
-  - name: react
-  - name: redhat
-  - name: redis
-  - name: ruby
-  - name: rubymine
-  - name: safari
-  - name: sass
-  - name: sequelize
-  - name: slack
-  - name: sourcetree
-  - name: ssh
-  - name: swift
-  - name: symfony
-  - name: tomcat
-  - name: travis
-  - name: trello
-  - name: twitter
-  - name: typescript
-  - name: ubuntu
-  - name: vim
-  - name: visualstudio
-  - name: vuejs
-  - name: webpack
-  - name: webstorm
-  - name: windows8
-  - name: wordpress
-  - name: yii
-  - name: zend
-
-icon_size: 50 # font-size of icons in px
-colored: colored # Leave blank for black and white icons
-
-project_button: Github
-
-github: https://github.com/jameshamann/jekyll-material-theme
-medium: https://medium.com
-
-baseurl: # If your site is located at /blog or /home, change it here, otherwise leave it empty
-url: http://localhost:4000/ # The URL of your site
-
-# Google tracking, if both are filled, tag manager will prevail. Set up GA through GTM in that case
-tag_manager_id: # This looks something like GTM-XXXXXXX
-google_analytics_tracking_id: # This looks something like UA-000000000-0 Head over to https://analytics.google.com/ to setup.
-
-cookie_accept_message: Thanks! # The pop-up dialog that appears after accepting the cookie notice.
-
-syntax_highlighting: true # include the css for syntax highlighting
-
-# Build settings
-markdown: kramdown
-permalink: pretty
-plugins:
-  - jekyll-feed
-  - jekyll-assets
-  - jekyll-minifier
-
-```
+The Simple Blog Theme is intended to make it quick and easy for Gitlab or GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/jameshamann/jekyll-material-theme. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Interested in contributing to Simple Blog? We'd love your help. Simple Blog is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](CONTRIBUTING.md) for instructions on how to contribute.
 
-## Development
+### Previewing the theme locally
 
-To set up your environment to develop and further customise this theme, fork the repo and explore the ```_assets``` directory, which includes all the ```css, js``` and ```font``` folders. If you're adding a feature, please add some tests in the ```spec``` directory to ensure everyhting works as intended.
+If you'd like to preview the theme locally (for example, in the process of proposing a change):
 
-## Contributors
+1. Clone down the theme's repository (`git clone https://gitlab.com/lorepirri/jekyll-theme-simple-blog`)
+2. `cd` into the theme's directory
+3. Run `script/bootstrap` to install the necessary dependencies
+4. Run `script/server` to start the preview server
+5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
 
-- [James Hamann](https://github.com/jameshamann)
-- [Jam Rizzer](https://github.com/jamrizzi)
-- [Kobes](https://github.com/Kobes)
 
-## [Changelog](https://github.com/jameshamann/jekyll-material-theme/blob/master/CHANGELOG.md)
+[`.gitlab-ci.yml`]: https://gitlab.com/jekyll-themes/default-bundler/blob/master/.gitlab-ci.yml
+[`Gemfile`]: https://gitlab.com/jekyll-themes/default-bundler/blob/master/Gemfile
+[`.gitignore`]: https://gitlab.com/jekyll-themes/default-bundler/blob/master/.gitignore
+[`_config.yml`]: https://gitlab.com/jekyll-themes/default-bundler/blob/master/_config.yml
 
-## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+[Bundler]: http://bundler.io/
+[Jekyll]: http://jekyllrb.com/
+[jek-312]: https://rubygems.org/gems/jekyll/versions/3.1.2
